@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Tune Deck — Your Music</title>
+  <meta name="description" content="Play the music already on your device. Installable, offline, no streaming." />
+
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#0b0b12" />
+  <link rel="icon" href="icons/icon-192.png" />
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Tune Deck" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <div class="app">
+
+    <header class="topbar">
+      <h1 class="topbar__title">Tune Deck</h1>
+      <div class="topbar__actions">
+        <button id="add-songs-btn" class="pill-btn pill-btn--accent">+ Add songs</button>
+        <button id="link-folder-btn" class="pill-btn hidden">Link a folder</button>
+      </div>
+      <input type="file" id="file-input" accept="audio/*" multiple class="sr-only" />
+    </header>
+
+    <section id="status" class="status" aria-live="polite">Add some songs from your device to get started.</section>
+
+    <section class="deck">
+      <div class="deck__art" id="deck-art">
+        <canvas id="visualizer" class="deck__visualizer"></canvas>
+        <div class="deck__art-glyph" id="deck-glyph">♪</div>
+      </div>
+
+      <div class="deck__info">
+        <p class="deck__title" id="now-title">Nothing playing</p>
+        <p class="deck__subtitle" id="now-subtitle">Your queue is empty</p>
+      </div>
+
+      <div class="deck__seek">
+        <span class="deck__time" id="time-current">0:00</span>
+        <input type="range" id="seek-bar" min="0" max="100" value="0" step="0.1" />
+        <span class="deck__time" id="time-duration">0:00</span>
+      </div>
+
+      <div class="deck__controls">
+        <button id="shuffle-btn" class="icon-btn" aria-label="Toggle shuffle" title="Shuffle">🔀</button>
+        <button id="prev-btn" class="icon-btn icon-btn--lg" aria-label="Previous track">⏮</button>
+        <button id="play-btn" class="icon-btn icon-btn--play" aria-label="Play">▶</button>
+        <button id="next-btn" class="icon-btn icon-btn--lg" aria-label="Next track">⏭</button>
+        <button id="repeat-btn" class="icon-btn" aria-label="Toggle repeat" title="Repeat">🔁</button>
+      </div>
+
+      <div class="deck__volume">
+        <span aria-hidden="true">🔊</span>
+        <input type="range" id="volume-bar" min="0" max="1" value="0.8" step="0.01" />
+      </div>
+    </section>
+
+    <section class="library">
+      <div class="library__header">
+        <h2 class="library__title">Your library</h2>
+        <input type="search" id="library-search" placeholder="Filter songs…" />
+      </div>
+      <ul id="library-list" class="library__list"></ul>
+    </section>
+
+  </div>
+
+  <button id="install-button" class="install-button hidden">Install Tune Deck</button>
+
+  <audio id="audio" preload="metadata"></audio>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

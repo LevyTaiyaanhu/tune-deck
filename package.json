@@ -1,0 +1,13 @@
+{
+  "name": "tune-deck",
+  "version": "1.0.0",
+  "description": "Installable PWA that plays music already stored on your device",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
